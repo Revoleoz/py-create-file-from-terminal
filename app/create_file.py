@@ -9,9 +9,10 @@ if "-d" in sys.argv and "-f" in sys.argv:
     if sys.argv.index("-f") < sys.argv.index("-d"):
         path = os.path.join(*sys.argv[sys.argv.index("-d") + 1:])
         os.makedirs(path, exist_ok=True)
-
-        with open(f"{path}\\{''.join(sys.argv[sys.argv.index('-f') + 1:
-                  sys.argv.index('-d')])}", "a") as file:
+        file_name = "".join(
+            sys.argv[sys.argv.index("-f") + 1:sys.argv.index("-d")]
+        )
+        with open(os.path.join(path, file_name), "a") as file:
             content_file = input("Enter content line: ")
             file.write(datetime_now.strftime("%Y-%m-%d %H:%M:%S\n"))
             while True:
@@ -26,9 +27,8 @@ if "-d" in sys.argv and "-f" in sys.argv:
         path = os.path.join(*sys.argv[sys.argv.index("-d") + 1:
                                       sys.argv.index("-f")])
         os.makedirs(path, exist_ok=True)
-
-        with open(f"{path}\\{''.join(sys.argv[sys.argv.index('-f') + 1:])}",
-                  "a") as file:
+        file_name = "".join(sys.argv[sys.argv.index("-f") + 1:])
+        with open(os.path.join(path, file_name), "a") as file:
             content_file = input("Enter content line: ")
             file.write(datetime_now.strftime("%Y-%m-%d %H:%M:%S\n"))
             while True:
