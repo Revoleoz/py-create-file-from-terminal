@@ -7,9 +7,7 @@ datetime_now = datetime.datetime.now()
 str_num = 1
 if "-d" in sys.argv and "-f" in sys.argv:
     if sys.argv.index("-f") < sys.argv.index("-d"):
-        path = (f"C:\\Users\\igor1\\PycharmProjects"
-                f"\\py-create-file-from-terminal\\"
-                f"{'\\'.join(sys.argv[sys.argv.index("-d") + 1:])}")
+        path = os.path.join(*sys.argv[sys.argv.index("-d") + 1:])
         os.makedirs(path, exist_ok=True)
 
         with open(f"{path}\\{''.join(sys.argv[sys.argv.index('-f') + 1:
@@ -25,10 +23,8 @@ if "-d" in sys.argv and "-f" in sys.argv:
                     break
 
     else:
-        path = (f"C:\\Users\\igor1\\PycharmProjects"
-                f"\\py-create-file-from-terminal\\"
-                f"{'\\'.join(sys.argv[sys.argv.index('-d') + 1:
-                                      sys.argv.index('-f')])}")
+        path = os.path.join(*sys.argv[sys.argv.index("-d") + 1:
+                                      sys.argv.index("-f")])
         os.makedirs(path, exist_ok=True)
 
         with open(f"{path}\\{''.join(sys.argv[sys.argv.index('-f') + 1:])}",
@@ -44,9 +40,7 @@ if "-d" in sys.argv and "-f" in sys.argv:
                     break
 
 elif "-d" in sys.argv and "-f" not in sys.argv:
-    path = (f"C:\\Users\\igor1\\PycharmProjects"
-            f"\\py-create-file-from-terminal\\"
-            f"{'\\'.join(sys.argv[sys.argv.index('-d') + 1:])}")
+    path = os.path.join(*sys.argv[sys.argv.index("-d") + 1:])
     os.makedirs(path, exist_ok=True)
 
 
